@@ -38,4 +38,6 @@ ma = Marshmallow(app)
 # If in Heroku, create tables in memory
 if os.environ["HEROKU"] == "T":
     app.config["SQLALCHEMY_DATABASE_URI"] = os.environ["DATABASE_URL"]
+
     db.create_all()
+    db.session.commit()
