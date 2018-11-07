@@ -7,8 +7,6 @@ Script to manually initialize Database
 
 """
 
-
-
 # Data to initialize database with
 labTests = [
     {
