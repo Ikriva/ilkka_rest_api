@@ -1,0 +1,142 @@
+swagger: "2.0"
+info:
+  description: This is sample project for simple REST API
+  version: "1.0.1"
+  title: REST API demo
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+
+basePath: "/api/v1"
+
+# Paths supported by the server application
+paths:
+  /labTests:
+    get:
+      operationId: "labTests.read"
+      tags:
+        - "labTests"
+      summary: "The labTests are laboratory tests that can be conducted. This operation lists all saved tests."
+      description: "Read the list of saved labTests"
+      responses:
+        200:
+          description: "Successfully listed labTests"
+          schema:
+            type: "array"
+            items:
+              properties:
+                test_id:
+                  type: "integer"
+                name:
+                  type: "string"
+                unit:
+                  type: "string"
+                value_min:
+                  type: "string"
+                value_max:
+                  type: "string"
+    post:
+      operationId: "labTests.create"
+      tags:
+        - labTests
+      summary: Create a lab test and add it to the labTests list
+      description: Create a new lab test in the labTests list
+      parameters:
+        - name: labTest
+          in: body
+          description: Laboratory test to be created
+          required: True
+          schema:
+            type: object
+            properties:
+                name:
+                  type: "string"
+                  description: First name of person to create
+                unit:
+                  type: "string"
+                  description: First name of person to create
+                value_min:
+                  type: "string"
+                  description: First name of person to create
+                value_max:
+                  type: "string"
+                  description: First name of person to create
+      responses:
+        201:
+          description: Successfully created laboratory test and added to database.
+
+  /labTests/{test_id}:
+    get:
+      operationId: "labTests.read_one"
+      tags:
+        - labTests
+      summary: Read one labTest from the labTests list
+      description: Read one labTest from the labTests list
+      parameters:
+        - name: test_id
+          in: path
+          description: Id of the labTest
+          type: integer
+          required: True
+      responses:
+        200:
+          description: Successfully read labTest from labTests list operation
+          schema:
+            properties:
+                test_id:
+                  type: "integer"
+                name:
+                  type: "string"
+                unit:
+                  type: "string"
+                value_min:
+                  type: "string"
+                value_max:
+                  type: "string"
+
+    put:
+      operationId: "labTests.update"
+      tags:
+        - labTests
+      summary: Update a labTest in the labTests list
+      description: Update a labTest in the labTests list
+      parameters:
+        - name: test_id
+          in: path
+          description: Id of the labTest to update in the list
+          type: integer
+          required: True
+        - name: labTest
+          in: body
+          schema:
+            type: object
+            properties:
+                test_id:
+                  type: "integer"
+                name:
+                  type: "string"
+                unit:
+                  type: "string"
+                value_min:
+                  type: "string"
+                value_max:
+                  type: "string"
+      responses:
+        200:
+          description: Successfully updated labTest in labTests list
+
+    delete:
+      operationId: "labTests.delete"
+      tags:
+        - labTests
+      summary: Delete a labTest from the labTests list
+      description: Delete a labTest
+      parameters:
+        - name: test_id
+          in: path
+          type: integer
+          required: True
+      responses:
+        200:
+          description: Successfully deleted a laboratory test from labTests list

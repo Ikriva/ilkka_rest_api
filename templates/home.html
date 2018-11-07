@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Application Home Page</title>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-md-center">
+        <h1 class="banner mt-5">REST API Demo Application</h1>
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="col-3">
+            <p>Double click to select saved laboratory test.</p>
+            <p><a href="api/v1/ui">API documentation</a></p>
+
+        </div>
+        <div class="col-6">
+            <input id="test_id" type="hidden" value=""/>
+            <div class="form-group">
+                <div class="input-group mb-1">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Test name</span>
+                    </div>
+                    <input id="name" type="text" class="form-control">
+                </div>
+                <div class="input-group mb-1">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Test unit</span>
+                    </div>
+                    <input id="unit" type="text" class="form-control">
+                </div>
+                <div class="input-group mb-1">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Test normal min</span>
+                    </div>
+                    <input id="value_min" type="text" class="form-control">
+                </div>
+                <div class="input-group mb-1">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Test normal max</span>
+                    </div>
+                    <input id="value_max" type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="row">
+            <button type="button" class="btn btn-outline-primary m-1" id="create">Create</button>
+            <button type="button" class="btn btn-outline-primary m-1" id="update">Update</button>
+            <button type="button" class="btn btn-outline-primary m-1" id="delete">Delete</button>
+            <button type="button" class="btn btn-outline-primary m-1" id="reset">Reset</button>
+        </div>
+    </div>
+    <div class="row justify-content-md-center mt-4" id="labTest_table">
+        <h5>Saved laboratory tests</h5>
+        <table class="table table-hover">
+            <caption>Laboratory tests</caption>
+            <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Unit</th>
+                <th>Normal min</th>
+                <th>Normal max</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div class="error">
+    </div>
+</div>
+
+</body>
+<script src="static/js/ui.js"></script>
+</html>
