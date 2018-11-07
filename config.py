@@ -20,6 +20,7 @@ app = connex_app.app
 # Build the Sqlite ULR for SqlAlchemy
 sqlite_url = "sqlite:///rest_api.db"
 
+
 # Configure the SqlAlchemy part of the app instance
 app.config["SQLALCHEMY_ECHO"] = True
 app.config["SQLALCHEMY_DATABASE_URI"] = sqlite_url
@@ -28,16 +29,13 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 # Set other configuration
 app.config["SECRET_KEY"] = 'dev'
 
-
-
-# Configure test or prod environment
-
-
 # Create the SqlAlchemy db instance
 db = SQLAlchemy(app)
 
 # Initializing Marshmallow for serialization
 ma = Marshmallow(app)
 
-DEBUG = True
-FLASK_DEBUG = False
+# If in Heroku, create tables in memory
+if os.environ["HEROKU"] == "T":
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ["DATABASE_URL"]
+    db.create_all()

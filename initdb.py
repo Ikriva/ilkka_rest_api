@@ -2,6 +2,13 @@ import os
 from config import db
 from models import LabTest
 
+"""
+Script to manually initialize Database
+
+"""
+
+
+
 # Data to initialize database with
 labTests = [
     {
